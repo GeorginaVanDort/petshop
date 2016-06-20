@@ -1,5 +1,8 @@
-function App(model){
-  this.model = model;
+/**
+ *  App object
+ */
+function App(name){
+  this.name = name;
   this.pets = [];
 }
 
@@ -11,38 +14,41 @@ App.prototype.addPet = function(pet){
 
   if(!exists){
     this.pets.push(pet);
-    this.model.save("animal", this.pets)
   }
 }
 
-function Pets(name, breed, age, color, considerations, image, type){
+function Pets(name, email, ownerName, description){
   this.name = name;
+  this.ownerEmail = email;
+  this.ownerName = ownerName
   this.id = md5(name);
-  this.breed = breed;
-  this.age = age;
-  this.color = color;
-  this.considerations = considerations;
-  this.image = image;
-  this.type = type;
+  this.description = description;
   this.adopted = false;
+  this.image = "";
 }
 
+/**
+ *  App object
+ */
 Pets.prototype.adopted = function(){
  (this.adopted) ? this.adopted = false; : this.adopted = true;
 }
 
-Storage.prototype.setObject = function(key, value) {
-    this.setItem(key, JSON.stringify(value));
-};
+var app = new App();
+var renderCard = function(pets) {
 
-Storage.prototype.getObject = function(key) {
-    var value = this.getItem(key);
-    return value && JSON.parse(value);
-};
 
-var app = new App(new Model("pets"));
-
+}
 // front-end
 $(function(){
-
+$(".contact-form").submit(function(event){
+  event.preventDefault();
+  var name = ("#petname").val();
+  var email =("#email").val();
+  var ownerName = ("#name").val();
+  var description = ("#description").val();
+  var newPet = new Pets(name, email, ownerName, description);
+  app.pets.push(newPet);
+  renderCard(newPet);
+});
 });
