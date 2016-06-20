@@ -9,5 +9,5 @@ function Pets(breed, age, color, considerations, image, type){
 }
 
 Pets.prototype.adopted = function(){
- (this.adopted) ? this.adopted = false : this.adopted = true;
+ (this.adopted) ? this.adopted = false; : this.adopted = true;
 }
