@@ -31,7 +31,7 @@ function Pets(name, email, ownerName, description){
  *  App object
  */
 Pets.prototype.adopted = function(){
- (this.adopted) ? this.adopted = false : this.adopted = true;
+ (this.adopted) ? this.adopted = false; : this.adopted = true;
 }
 
 var app = new App();
